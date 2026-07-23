@@ -17,7 +17,7 @@ jobs:
       upstream-sha: ${{ steps.upstream.outputs.upstream-sha }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -82,7 +82,7 @@ jobs:
       UPSTREAM_SHA: ${{ needs.check-upstream.outputs.upstream-sha }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -153,7 +153,7 @@ jobs:
           Move-Item -Force "./flip_fluids.zip" "./flip_fluids_${{ steps.tag.outputs.tag_name }}.zip"
 
       - name: Create Release and Upload Asset
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.tag.outputs.tag_name }}
           name: FLIP Fluids Build ${{ steps.tag.outputs.timestamp }}
